@@ -37,7 +37,7 @@ st.session_state.user_question = question  # Update session state
 if st.button("Summarize"):
     if transcript:
         # Set question_to_answer based on user input
-        question_to_answer = f"Answer this question based on the transcript: {question}" if question else ""
+        question_to_answer = f"Finally, after displaying your summary, your last task will be to answer this question based on the transcript: {question}" if question else ""
 
         # Process the transcript and display the summary
         with st.spinner('Summarizing...'):
@@ -155,10 +155,10 @@ if st.button("Summarize"):
                         You will receive summaries extracted from segments of a complete transcript. \
                         Your task is to synthesize these summaries into a comprehensive overview that captures the core message, key arguments, and essential details the author intended to convey. \
                         Focus on maintaining the author's voice and perspective while presenting a cohesive narrative of the transcript's content. \
-                        
-                        {question_to_answer} \
 
-                        Here's the transcript to analyze and summarize: {temp_final_summary}
+                        Here's the transcript to analyze and summarize: {temp_final_summary}\
+
+                        {question_to_answer}\
                 """
             
                 final_response = client.chat.completions.create(
